@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<meta charset="UTF-8">
+		<title>Health Monitoring</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+		<style>
+			.report
+			{
+				top: 20%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="report">
+			<center>
+				<h1>Health Report</h1>
+				<table>
+					<tr>
+						<!-- Main Input For Receiving Query to the ML model -->
+						<form action="{{ url_for('y_predict')}}"method="post">
+							<input type="text" name="SBP" placeholder="Enter your SBP" required="required" /><br/>
+							<input type="text" name="DBP" placeholder="Enter your DBP" required="required" /><br/>
+							<input type="text" name="Pulse" placeholder="Enter your Pulse" required="required" /><br/>
+							<input type="text" name="Temperature" placeholder="Enter your Temperature" required="required" /><br/>
+							<button type="submit" class="btn btn-primary btn-block btn-large">Print Report</button>
+						</form>
+					</tr>
+				</table>
+			</center>
+			<br>
+			<br>
+			{{ prediction_text }}
+		</div>
+	</body>
+</html>
